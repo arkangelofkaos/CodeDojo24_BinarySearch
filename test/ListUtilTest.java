@@ -12,10 +12,25 @@ public class ListUtilTest {
 
     @Test
     public void shouldReturnIndexOfFoundItem() throws Exception {
-        assertEquals(6, indexOf(7, Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8)));
+        List<Integer> sortedListTestData = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
+        int expectedIndex = 6;
+        int searchItem = 7;
+        int actualIndexOfItem = indexOf(searchItem, sortedListTestData);
+
+        assertEquals(expectedIndex, actualIndexOfItem);
+    }
+
+    @Test
+    public void shouldReturnMinusOneForMissingItem() throws Exception {
+        List<Integer> sortedListTestData = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
+        int expectedIndex = -1;
+        int searchItem = 10;
+        int actualIndexOfItem = indexOf(searchItem, sortedListTestData);
+
+        assertEquals(expectedIndex, actualIndexOfItem);
     }
 
     private <T> int indexOf(T item, List<T> sortedList) {
-        return 6;
+        return sortedList.indexOf(item);
     }
 }
