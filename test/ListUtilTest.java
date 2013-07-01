@@ -72,12 +72,7 @@ public class ListUtilTest {
 
     private <T extends Comparable<T>> int doBinarySearch(T item, List<T> sortedList, int startIndex, int endIndex) {
         if (startIndex == endIndex) {
-            T element = sortedList.get(startIndex);
-            if (element.equals(item)) {
-                return startIndex;
-            } else {
-                return -1;
-            }
+            return doListCheck(item, sortedList, startIndex);
         }
 
         int splitIndex = splitIndex(endIndex - startIndex) + startIndex;
@@ -88,6 +83,11 @@ public class ListUtilTest {
         } else {
             return doBinarySearch(item, sortedList, startIndex, splitIndex);
         }
+    }
+
+    private <T extends Comparable<T>> int doListCheck(T searchItem, List<T> sortedList, int candidateSearchItemIndex) {
+        T element = sortedList.get(candidateSearchItemIndex);
+        return (element.equals(searchItem)) ? candidateSearchItemIndex : -1;
     }
 
     private int splitIndex(int size) {
