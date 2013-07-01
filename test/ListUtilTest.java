@@ -28,11 +28,16 @@ public class ListUtilTest {
         assertEquals(-1, indexOf(9, orderedListTestData));
     }
 
+    @Test
+    public void shouldReturnIndexOfItem1() throws Exception {
+        assertEquals(0, indexOf(1, orderedListTestData));
+    }
+
+    /**
+     * Implementation code below
+     */
+
     private <T> int indexOf(T searchItem, List<T> orderedList) {
-        if (orderedList.indexOf(searchItem) >= 0) {
-            return 6;
-        } else {
-            return -1;
-        }
+        return orderedList.indexOf(searchItem);
     }
 }
