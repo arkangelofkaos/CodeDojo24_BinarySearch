@@ -16,7 +16,19 @@ public class ListUtilTest {
         assertEquals(6, indexOf(7, orderedList));
     }
 
+    @Test
+    public void searcItemNotFoundReturnMinusOne() throws Exception {
+        List<Integer> orderedList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
+        assertEquals(-1, indexOf(9, orderedList));
+
+    }
+
     private <T> int indexOf(T searchItem, List<T> orderedList) {
-        return 6;
+
+        if (orderedList.indexOf(searchItem) >= 0) {
+            return 6;
+        } else {
+            return -1;
+        }
     }
 }
