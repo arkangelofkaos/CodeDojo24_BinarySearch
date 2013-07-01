@@ -12,6 +12,10 @@ import static org.junit.Assert.assertEquals;
  */
 public class ListUtilTest {
 
+    public static final int LESS_THAN_COMPARE_RESULT = -1;
+
+    public static final int MORE_THAN_COMPARE_RESULT = 1;
+
     private List<Integer> orderedListTestData;
 
     @Before
@@ -42,10 +46,17 @@ public class ListUtilTest {
     }
 
     @Test
-    public void shouldReturnCorrectlyChoppedList() throws Exception {
+    public void shouldReturnSecondHalfOfListWhereSearchItemIs() throws Exception {
         Integer searchItem = 5;
         List<Integer> choppedList = chopList(searchItem, orderedListTestData);
         assertEquals(Arrays.asList(5, 6, 7, 8), choppedList);
+    }
+
+    @Test
+    public void shouldReturnFirstHalfOfListWhereSearchItemIs() throws Exception {
+        Integer searchItem = 1;
+        List<Integer> choppedList = chopList(searchItem, orderedListTestData);
+        assertEquals(Arrays.asList(1, 2, 3, 4), choppedList);
     }
 
     /**
@@ -66,7 +77,9 @@ public class ListUtilTest {
         int compareToResult = searchItem.compareTo(middleItem);
 
         switch (compareToResult) {
-            case (1):
+            case LESS_THAN_COMPARE_RESULT:
+                return list.subList(0, listSubSize);
+            case MORE_THAN_COMPARE_RESULT:
                 return list.subList(listSubSize, lengthOfList);
         }
 
